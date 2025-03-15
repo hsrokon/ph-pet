@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/favico.png" type="image/x-icon">
+    <title>Petty</title>
+    <!-- tailwindcss -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <!-- daisy UI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <nav class="w-11/12 mx-auto mt-6 flex justify-between items-center ">
+        <div><img src="images/logo.webp" alt="logo"></div>
+        <div>
+            <ul class="flex gap-4">
+                <li class="cursor-pointer">Home</li>
+                <li class="cursor-pointer">Shop</li>
+                <li class="cursor-pointer">Contact </li>
+            </ul>
+        </div>
+        <div class="cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>                  
+        </div>
+    </nav>
+    <header class="w-11/12 mx-auto mt-6 text-center">
+        <div class="flex flex-col gap-4">
+            <h4 class="font-semibold">Bringing Families Together ❤️‍🔥</h4>
+            <h1 class="font-bold text-4xl">Your Path to Adoption Starts Here</h1>
+            <p class="text-sm">Finding the perfect pet has never been easier! At Petty, we connect loving pets with caring owners. Browse a wide variety of healthy, <br> happy pets and bring home a new furry, feathery, or scaly friend today!</p>
+            <button class="bg-[#0E7A81] w-auto p-2 hover:bg-[#4d8c90] text-white cursor-pointer rounded-md mx-auto">View More</button>
+        </div>
+        <div class="flex justify-center">
+            <img src="images/pet.webp" alt="cover-photo">
+        </div>
+    </header>
+
+    
+
+    <section class="w-11/12 mx-auto mt-4 mb-44">
+        <div class="text-center">
+            <h2 class="text-2xl font-semibold">Adopt Your Best Friend</h2>
+            <p>Your best friend is waiting for you! Open your heart and home to a pet that will bring you endless love, joy, and companionship.</p>
+        </div>
+        <div id="category" class="flex flex-col md:flex-row justify-evenly items-center gap-4 md:gap-0 mt-4">
+        </div>
+        <h4 class="my-8 text-center md:text-left text-lg font-bold">
+            Beast deals for you
+        </h4>
+        <div class="flex justify-around">
+            <div id="pets" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+
+            </div>
+            <div class="w-72 h-screen hidden lg:block border border-gray-300 rounded-lg">
+
+            </div>
+        </div>
+        
+    </section>
+    
+    <script src="scripts/home.js"></script>
+</body>
+</html>
