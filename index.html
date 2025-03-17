@@ -63,8 +63,6 @@
     </section>
 
     <!-- modal -->
-
-    <!-- Put this part before </body> tag -->
     <input type="checkbox" id="my_modal_7" class="modal-toggle" />
     <div class="modal" role="dialog">
             <div id="detailsModal" class="modal-box">
@@ -72,6 +70,52 @@
             </div>
             <label class="modal-backdrop" for="my_modal_7">Close</label>
     </div>
+
+    <!-- footer -->
+    <footer class="bg-black flex flex-col md:flex-row justify-around items-start gap-6 md:gap-0 text-white text-sm px-4 py-16">
+        <div class="flex flex-col gap-6">
+            <a href="#">
+                <div class="flex gap-4 items-center">
+                    <div class="w-6 h-6">
+                        <img class="w-auto h-auto" src="images/logo.webp" alt="Logo">
+                    </div>
+                    <h1 class="font-bold text-xl cursor-pointer">Petty</h1>
+                </div>
+            </a>
+            
+            <div class="flex flex-col gap-2">
+                <p>Location: av. Washington 165, NY CA 54003</p>
+                <p>Phone: +31 85 964 47 25</p>
+                <p>Email: info@yourdomain.com</p>
+                <p>Openings hours: 9.00 AM - 5.00 PM</p>
+            </div>
+            <div class="flex gap-2">
+                <img class="w-5 cursor-pointer" src="images/Logos/fb.png" alt="facebook">
+                <img class="w-5 cursor-pointer" src="images/Logos/x.png" alt="X">
+                <img class="w-5 cursor-pointer" src="images/Logos/yt.png" alt="YouTube">
+                <img class="w-5 cursor-pointer" src="images/Logos/ig.png" alt="Instagram">
+            </div>
+        </div>
+        
+        <div>
+            <h2 class="py-2 pb-4 font-semibold text-lg">Useful Links</h2>
+            <div class="flex flex-col gap-2">
+                <div class="cursor-pointer">Home</div>
+                <div class="cursor-pointer">About Us</div>
+                <div class="cursor-pointer">Animals</div>
+                <div class="cursor-pointer">Foundations</div>
+                <div class="cursor-pointer">Contact</div>
+            </div>
+        </div>
+
+        <div>
+            <h2 class="py-1 pb-4 font-semibold text-lg">Drop a Message</h2>
+            <form class="flex flex-col gap-2">
+                <input class="rounded-lg py-[0.18rem] pl-2 placeholder:text-xs" type="email" placeholder="Enter your E-mail">
+                <button  class="rounded-lg py-[0.2rem] bg-[#0E7A81] w-auto hover:bg-[#4d8c90] cursor-pointer">Subscribe</button>
+            </form>
+        </div>
+    </footer>
 
     <script src="scripts/home.js"></script>
 </body>
