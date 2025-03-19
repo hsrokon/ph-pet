@@ -16,13 +16,13 @@ function renderCategory(categories) {
         const iCat = document.createElement('div');
         // iPet.classList.add('flex','flex-col')
         iCat.innerHTML=`
-            <button id="${cat.category}-btn" class="w-auto px-8 py-[0.8rem] border-2 border-gray-300 cursor-pointer rounded-xl mx-auto flex items-center gap-1 cat-btn" onclick="renderCatCards('${cat.category}')"><img class="w-8" src="images/pets/${cat.category}.png" alt="">${cat.category}</button>
+            <button id="${cat.category}-btn" class="w-auto px-8 py-[0.8rem] border-2 border-gray-300 cursor-pointer rounded-xl mx-auto flex items-center gap-1 cat-btn" onclick="loadPetsByCategory('${cat.category}')"><img class="w-8" src="images/pets/${cat.category}.png" alt="">${cat.category}</button>
         `
         catDiv.appendChild(iCat);
     });
 }
 
-async function renderCatCards(cat) {
+async function loadPetsByCategory(cat) {
     try {
         const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${cat}`);
         const iCat = await res.json();
@@ -55,6 +55,18 @@ async function lodPets() {
 function renderPets(pets) {
     const petDiv = document.getElementById('pets');
     petDiv.innerHTML='';
+
+    if (pets.length===0) {
+        petDiv.classList.remove('grid');
+        petDiv.innerHTML=`
+        <div class="min-h-[300px] w-full mx-auto flex flex-col gap-5 justify-center items-center text-center">
+            <img src="images/error.webp" alt="No pets available">
+            <h1 class="font-bold text-3xl">No pets available right now</h1>
+        </div>
+        `
+    } else {
+        petDiv.classList.add('grid');
+    }
 
     pets.forEach(pet => {
         const iPet = document.createElement('div');
