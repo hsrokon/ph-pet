@@ -16,10 +16,29 @@ function renderCategory(categories) {
         const iCat = document.createElement('div');
         // iPet.classList.add('flex','flex-col')
         iCat.innerHTML=`
-            <button class="w-auto px-8 py-[0.8rem] border-2 border-gray-300 hover:border-[#4d8c90] hover:bg-[#f1f4f4] cursor-pointer rounded-xl hover:rounded-3xl mx-auto flex items-center gap-1"><img class="w-8" src="images/pets/${cat.category}.png" alt="">${cat.category}</button>
+            <button id="${cat.category}-btn" class="w-auto px-8 py-[0.8rem] border-2 border-gray-300 cursor-pointer rounded-xl mx-auto flex items-center gap-1 cat-btn" onclick="renderCatCards('${cat.category}')"><img class="w-8" src="images/pets/${cat.category}.png" alt="">${cat.category}</button>
         `
         catDiv.appendChild(iCat);
     });
+}
+
+async function renderCatCards(cat) {
+    try {
+        const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${cat}`);
+        const iCat = await res.json();
+        document.querySelectorAll('.cat-btn').forEach(button => {
+            button.classList.remove('border-[#4d8c90]','bg-[#f1f4f4]','rounded-3xl');
+            button.classList.add('border-gray-300','rounded-xl');
+        })
+        const catBtn = document.getElementById(`${cat}-btn`);
+        if (catBtn) {//This ensures that catBtn is not null before trying to modify its classList, preventing potential runtime errors
+            catBtn.classList.add('border-[#4d8c90]','bg-[#f1f4f4]','rounded-3xl');
+            catBtn.classList.remove('border-gray-300','rounded-xl');
+        }
+        renderPets(iCat.data);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 
