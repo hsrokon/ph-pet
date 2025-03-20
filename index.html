@@ -58,9 +58,16 @@
         
 
         <div class="flex justify-around">
-            <div id="pets" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-
+            <div class="relative">
+                <div id="petsLoader" class="absolute inset-0 flex justify-center items-start bg-white/80 z-50 min-h-[100px]">
+                    <span class="loading loading-infinity loading-xl w-14 h-14 md:w-18 md:h-18 xl:mt-12"></span>
+                </div>
+                <div id="pets" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                    <!-- Pet items will load here -->
+                </div>
             </div>
+            
+            
             <div class="w-72 h-screen hidden lg:block border border-gray-300 rounded-lg text-center">
                 <h2 class="text-xl font-semibold my-2">My favorites</h2>
                 <hr class="w-full text-slate-300">

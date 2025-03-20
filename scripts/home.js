@@ -44,14 +44,26 @@ async function loadPetsByCategory(cat) {
 }
 
 
-async function lodPets() {
+async function loadPets() {
+    const petsDiv = document.getElementById('pets');
+    const loader = document.getElementById('petsLoader');
+
+    loader.style.display= "flex";
+    petsDiv.innerHTML="";
+
+    const delay = new Promise(resolve => setTimeout(resolve,2000));
+
     try {
         const res = await fetch('https://openapi.programming-hero.com/api/peddy/pets');
         const petData = await res.json();
         allPets = petData.pets; //store all pets
+
+        await Promise.all([delay]);
         renderPets(petData.pets);
     } catch (error) {
         console.error(error);
+    } finally {
+        loader.style.display= "none";
     }
 }
 
@@ -267,4 +279,4 @@ function renderPetDetails(pet) {
 }
 
 lodCategories()
-lodPets()
+loadPets()
