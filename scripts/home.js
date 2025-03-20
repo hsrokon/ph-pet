@@ -117,14 +117,14 @@ function renderPets(pets) {
                     <div>Price: ${pet.price===null ? 'Undeclared' : !pet.price ? 'Undeclared' :`$${pet.price}`}</div>
                 </div>
             </div>
-            <hr class="w-full bg-slate-100">
+            <hr class="w-full text-slate-400">
             
             <div class="flex items-center justify-evenly">
-                <div class="border border-[#0E7A81] rounded-lg px-2 py-1.5 cursor-pointer">
+                <button class="border border-[#0E7A81] rounded-lg px-2 py-1.5 cursor-pointer" onclick="loadFavorites('${pet.petId}')">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                     </svg>                                  
-                </div>
+                </button>
                 <button class="bg-[#0E7A81] w-auto border border-[#0E7A81] rounded-lg px-3 py-1.5 hover:bg-[#4d8c90] text-white cursor-pointer mx-auto">Adopt</button>
                 
                 <label for="my_modal_7" class="bg-[#0E7A81] w-auto border border-[#0E7A81] rounded-lg px-3 py-1.5 hover:bg-[#4d8c90] text-white cursor-pointer" onclick="petDetailsLoad(${pet.petId})">Details</label>
@@ -135,6 +135,46 @@ function renderPets(pets) {
         `
         petDiv.appendChild(iPet)
     });
+}
+
+const favArray = [];
+// console.log(favArray);
+async function loadFavorites(petId) {
+    try {
+        const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`);
+        const petData = await res.json();
+
+        const favDiv = document.getElementById('favorites');
+        if(favArray.some(pet =>pet.petId === petData.petData.petId)){
+            const tempMsg = document.createElement('div');
+            tempMsg.classList.add('text-red-500', 'text-lg', 'mt-2', 'font-bold');
+            tempMsg.innerText="Already in favorites!";
+            favDiv.appendChild(tempMsg);
+            setTimeout(()=>{
+                tempMsg.remove()
+            },2000);
+            return;
+        }
+
+        favArray.push(petData.petData);
+        renderFavorites();
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function renderFavorites() {
+    const favDiv = document.getElementById('favorites');
+    favDiv.innerHTML='';
+    favArray.forEach(pet => {
+        const iFav = document.createElement('div');
+        iFav.innerHTML=`
+        <img class="rounded-md" src="${pet.image}" alt="${pet.pet_name}">
+        <p>${pet.pet_name}</p>
+        `
+        favDiv.appendChild(iFav)
+    })
+
 }
 
 async function petDetailsLoad(petId) {
