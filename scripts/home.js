@@ -1,3 +1,5 @@
+let allPets = [];
+
 async function lodCategories() {
     try {
         const res = await fetch('https://openapi.programming-hero.com/api/peddy/categories');
@@ -46,6 +48,7 @@ async function lodPets() {
     try {
         const res = await fetch('https://openapi.programming-hero.com/api/peddy/pets');
         const petData = await res.json();
+        allPets = petData.pets; //store all pets
         renderPets(petData.pets);
     } catch (error) {
         console.error(error);
@@ -135,6 +138,11 @@ function renderPets(pets) {
         `
         petDiv.appendChild(iPet)
     });
+}
+
+function sortPetsByPrice() {
+    const sortedPets = [...allPets].sort((a,b)=> (a.price||0) - (b.price || 0));
+    renderPets(sortedPets);
 }
 
 const favArray = [];
