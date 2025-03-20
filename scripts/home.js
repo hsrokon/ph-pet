@@ -144,9 +144,9 @@ function sortPetsByPrice() {
     const sortedPets = [...allPets].sort((a,b) => {
         // (a.price||0) - (b.price || 0) //previous code - undeclared prices (null or undefined) are considered 0, so they appear first.
 
-        if(a.price == null) return 1;
-        if(b.price == null) return -1;
-        return a.price - b.price;
+        if(a.price == null) return 1;//Move undeclared prices to the end
+        if(b.price == null) return -1;//Keep valid prices first
+        return a.price - b.price;//Sort normally - low to high
     
     });
     renderPets(sortedPets);
